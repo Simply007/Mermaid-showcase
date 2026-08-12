@@ -57,13 +57,6 @@ flowchart LR
     end
 
     Generic ~~~ Concrete
-
-    GP -.-> IG
-    GC -.-> IP
-    GS -.-> IT1
-    GA -.-> IS
-    GT -.-> IT2
-    GE -.-> IC
 ```
 
 ```mermaid
