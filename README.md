@@ -36,6 +36,25 @@ flowchart TD
     PWS -->|"publishes to Kontent.ai"| SITE["ondrej.chrastina.dev"]
 ```
 
+```mermaid
+flowchart TD
+    subgraph Google
+        G[Google Profile<br/>avatar URL]
+    end
+    subgraph Server
+        P[passport.js<br/>extract avatar]
+        A[auth.js callback<br/>pass to session]
+        T1[tokenService<br/>session JWT]
+        S[/auth/status<br/>return to client]
+        T2[token.js<br/>pass to CKEditor token]
+        T3[tokenService<br/>CKEditor JWT]
+    end
+    subgraph CKEditor
+        C[Cloud Services<br/>presence list]
+    end
+    G --> P --> A --> T1 --> S --> T2 --> T3 --> C
+
+```
 
 ```mermaid
 flowchart TB
