@@ -55,13 +55,6 @@ flowchart TD
         end
         IG --> IP --> IA --> IT1 --> IS --> IT2 --> IT3 --> IC
     end
-
-    GP -.-> IG
-    GC -.-> IP
-    GS -.-> IT1
-    GA -.-> IS
-    GT -.-> IT2
-    GE -.-> IC
 ```
 
 ```mermaid
