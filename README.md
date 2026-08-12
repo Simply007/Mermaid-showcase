@@ -19,7 +19,7 @@ sequenceDiagram
 ```
 
 ```mermaid
-flowchart TD
+flowchart LR
     subgraph Generic["Generic OAuth Flow"]
         direction TB
         subgraph Provider
@@ -55,6 +55,15 @@ flowchart TD
         end
         IG --> IP --> IA --> IT1 --> IS --> IT2 --> IT3 --> IC
     end
+
+    Generic ~~~ Concrete
+
+    GP -.-> IG
+    GC -.-> IP
+    GS -.-> IT1
+    GA -.-> IS
+    GT -.-> IT2
+    GE -.-> IC
 ```
 
 ```mermaid
