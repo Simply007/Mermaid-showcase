@@ -43,18 +43,25 @@ flowchart TD
             IG[Google Profile<br/>avatar URL]
         end
         subgraph Server2[Server]
-            IP[passport.js<br/>extract avatar]
+            IP[passport.js<br/>extract ava
             IA[auth.js callback<br/>pass to session]
-            IT1[tokenService<br/>session JWT]
+            IT1[tokenService<br/>session J
             IS["/auth/status<br/>return to client"]
-            IT2[token.js<br/>pass to CKEditor token]
+            IT2[token.js<br/>pass to CKEdi
             IT3[tokenService<br/>CKEditor JWT]
         end
         subgraph CKEditor2[CKEditor]
-            IC[Cloud Services<br/>presence list]
+            IC[Cloud Services<br/>presence
         end
-        IG --> IP --> IA --> IT1 --> IS --> IT2 --> IT3 --> IC
+        IG --> IP --> IA --> IT1 --> IS --
     end
+
+    GP -.-> IG
+    GC -.-> IP
+    GS -.-> IT1
+    GA -.-> IS
+    GT -.-> IT2
+    GE -.-> IC
 ```
 
 ```mermaid
