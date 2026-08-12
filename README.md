@@ -38,22 +38,41 @@ flowchart TD
 
 ```mermaid
 flowchart TD
-    subgraph Google
-        G[Google Profile<br/>avatar URL]
+    subgraph Generic["Generic OAuth Flow"]
+        direction TB
+        subgraph Provider
+            GP[OAuth Provider<br/>profile data]
+        end
+        subgraph Server1[Server]
+            GC[OAuth Callback<br/>extract data]
+            GS[Session Token<br/>store data]
+            GA[Auth Status<br/>return to client]
+            GT[CKEditor Token<br/>include in JWT]
+        end
+        subgraph CKEditor1[CKEditor]
+            GE[Cloud Services<br/>presence list]
+        end
+        GP --> GC --> GS --> GA --> GT --> GE
     end
-    subgraph Server
-        P[passport.js<br/>extract avatar]
-        A[auth.js callback<br/>pass to session]
-        T1[tokenService<br/>session JWT]
-        S[/auth/status<br/>return to client]
-        T2[token.js<br/>pass to CKEditor token]
-        T3[tokenService<br/>CKEditor JWT]
-    end
-    subgraph CKEditor
-        C[Cloud Services<br/>presence list]
-    end
-    G --> P --> A --> T1 --> S --> T2 --> T3 --> C
 
+    subgraph Concrete["Implementation (Google)"]
+        direction TB
+        subgraph Google
+            IG[Google Profile<br/>avatar URL]
+        end
+        subgraph Server2[Server]
+            IP[passport.js<br/>extract avatar]
+            IA[auth.js callback<br/>pass to session]
+            IT1[tokenService<br/>session JWT]
+            IS["/auth/status<br/>return to client"]
+            IT2[token.js<br/>pass to CKEditor token]
+            IT3[tokenService<br/>CKEditor JWT]
+        end
+        subgraph CKEditor2[CKEditor]
+            IC[Cloud Services<br/>presence list]
+        end
+        IG --> IP --> IA --> IT1 --> IS --> IT2 --> IT3 --> IC
+    end
 ```
 
 ```mermaid
